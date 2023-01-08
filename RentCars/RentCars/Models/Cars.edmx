@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CarsDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="carsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarsName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarsModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="carsDate" Type="date" />
+          <Property Name="carsGear" Type="nchar" MaxLength="10" />
+          <Property Name="carsGas" Type="nvarchar" MaxLength="50" />
+          <Property Name="carsPrice" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="Tckimlik" />
+          </Key>
+          <Property Name="Tckimlik" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="dogumtarihi" Type="date" />
+          <Property Name="cinsiyet" Type="varchar" MaxLength="1" />
+          <Property Name="telefon" Type="varchar" MaxLength="11" />
+          <Property Name="sifre" Type="varchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="rezervasyonlar">
+          <Key>
+            <PropertyRef Name="rezervasyonId" />
+          </Key>
+          <Property Name="rezervasyonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aracıd" Type="int" />
+          <Property Name="tc" Type="nchar" MaxLength="11" />
+          <Property Name="adsoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="AlmaTarihi" Type="date" />
+          <Property Name="TeslimTarihi" Type="date" />
+          <Property Name="ucret" Type="money" />
+          <Property Name="iptalmi" Type="varchar" MaxLength="10" />
+          <Property Name="iptaltarihi" Type="date" />
+        </EntityType>
+        <EntityContainer Name="CarsDbModelStoreContainer">
+          <EntitySet Name="carsTable" EntityType="Self.carsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rezervasyonlar" EntityType="Self.rezervasyonlar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarsDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="carsTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarsModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="carsDate" Type="DateTime" Precision="0" />
+          <Property Name="carsGear" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="carsGas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="carsPrice" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="CarsDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="carsTable" EntityType="Self.carsTable" />
+          <EntitySet Name="rezervasyonlar" EntityType="CarsDbModel.rezervasyonlar" />
+          <EntitySet Name="Musteriler" EntityType="CarsDbModel.Musteriler" />
+        </EntityContainer>
+        <EntityType Name="rezervasyonlar">
+          <Key>
+            <PropertyRef Name="rezervasyonId" />
+          </Key>
+          <Property Name="rezervasyonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aracıd" Type="Int32" />
+          <Property Name="tc" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AlmaTarihi" Type="DateTime" Precision="0" />
+          <Property Name="TeslimTarihi" Type="DateTime" Precision="0" />
+          <Property Name="ucret" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="iptalmi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="iptaltarihi" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Musteriler">
+          <Key>
+            <PropertyRef Name="Tckimlik" />
+          </Key>
+          <Property Name="Tckimlik" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dogumtarihi" Type="DateTime" Precision="0" />
+          <Property Name="cinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="sifre" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarsDbModelStoreContainer" CdmEntityContainer="CarsDbEntities">
+          <EntitySetMapping Name="carsTable">
+            <EntityTypeMapping TypeName="CarsDbModel.carsTable">
+              <MappingFragment StoreEntitySet="carsTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CarsName" ColumnName="CarsName" />
+                <ScalarProperty Name="CarsModel" ColumnName="CarsModel" />
+                <ScalarProperty Name="carsDate" ColumnName="carsDate" />
+                <ScalarProperty Name="carsGear" ColumnName="carsGear" />
+                <ScalarProperty Name="carsGas" ColumnName="carsGas" />
+                <ScalarProperty Name="carsPrice" ColumnName="carsPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rezervasyonlar">
+            <EntityTypeMapping TypeName="CarsDbModel.rezervasyonlar">
+              <MappingFragment StoreEntitySet="rezervasyonlar">
+                <ScalarProperty Name="iptaltarihi" ColumnName="iptaltarihi" />
+                <ScalarProperty Name="iptalmi" ColumnName="iptalmi" />
+                <ScalarProperty Name="ucret" ColumnName="ucret" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+                <ScalarProperty Name="AlmaTarihi" ColumnName="AlmaTarihi" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="tc" ColumnName="tc" />
+                <ScalarProperty Name="aracıd" ColumnName="aracıd" />
+                <ScalarProperty Name="rezervasyonId" ColumnName="rezervasyonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musteriler">
+            <EntityTypeMapping TypeName="CarsDbModel.Musteriler">
+              <MappingFragment StoreEntitySet="Musteriler">
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="dogumtarihi" ColumnName="dogumtarihi" />
+                <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+                <ScalarProperty Name="Tckimlik" ColumnName="Tckimlik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

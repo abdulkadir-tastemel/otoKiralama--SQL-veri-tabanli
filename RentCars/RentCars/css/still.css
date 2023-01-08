@@ -1,0 +1,19 @@
+﻿body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size:20px;
+    color: #333;
+    background-color:#eee;
+
+}
+
+
+
+a:link , a:visited{
+    color:brown;
+    text-decoration:none;
+
+}
+
+a:hover{
+    color:crimson;
+}

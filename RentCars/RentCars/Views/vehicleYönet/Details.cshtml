@@ -1,0 +1,74 @@
+﻿@model RentCars.Models.carsTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>carsTable</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CarsName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CarsName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CarsModel)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CarsModel)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.carsDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.carsDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.carsGear)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.carsGear)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.carsGas)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.carsGas)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.carsPrice)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.carsPrice)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

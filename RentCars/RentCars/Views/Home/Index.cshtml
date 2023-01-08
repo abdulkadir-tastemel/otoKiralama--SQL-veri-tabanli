@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/css/still.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+
+    @Html.ActionLink("anasayfa", "Index") |
+    @Html.ActionLink("hakkımızda", "About") |
+    @Html.ActionLink("araçlar", "Index", "vehicle") |
+    @Html.ActionLink("iletişim", "Contact") |
+    @Html.ActionLink("referanslar", "Referance")
+
+    <div>
+        <h2>ABDUS OTO KİRALAMA</h2>
+        <p>
+            2021 de kurulan yeni bir şirket olmamıza rağmen müşterilere istenilen hizmeti sunmaktan ve
+            menun etmekten çok mutlu olup huzur buluyoruz ve sizlerin desteği ile daha da ileri seviye taşıyıp
+            global anlamda ülkemiz adına işler yapacağımızın garantisini veriyoruz..
+        </p>
+
+    </div>
+</body>
+</html>

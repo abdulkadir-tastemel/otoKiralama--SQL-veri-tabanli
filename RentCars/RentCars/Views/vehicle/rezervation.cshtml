@@ -1,0 +1,126 @@
+﻿@model RentCars.Models.rezervasyonlar
+
+
+
+@{
+    Layout = null;
+}
+
+<script type="text/javascript">
+
+    function ToplamPara() {
+
+        var dt1 = new Date(AlmaTarihi.value);
+        var dt2 = new Date(TeslimTarihi.value);
+        var timediff = Math.abs(dt2.getTime() - dt1.getTime());
+        var daysdiff = Math.ceil(timediff / (1000 * 3600 * 24));
+        var birimfiyat = parseFloat(Fiyat.value);
+        ucret.value = parseInt(daysdiff) * birimfiyat;
+
+
+    }
+
+</script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/still.css" rel="stylesheet" />
+    <title>rezervation</title>
+</head>
+<body>
+    <div>
+
+        <h1>Abdüş oto</h1>
+        <h3>Ararç Bilgileri</h3>
+       
+        <table border="1" cellpadding="5" cellspacing="0" width="600">
+            <tr>
+                <td>
+                    <h4>ARAÇ NO : @Url.RequestContext.RouteData.Values["id"]</h4>
+                    <h4>ARAÇ MARKASI : @ViewData["CarsName"]</h4>
+                    <h4>ARAÇ MODELİ : @ViewData["Carsmodel"]</h4>
+                </td>
+
+                <td>
+                    @{ 
+                        var dir = "~/VehicleImages/" + Url.RequestContext.RouteData.Values["id"] + ".jpg";
+                        <img src="@Url.Content(dir)" width="300" />
+                    }
+                </td>
+            </tr>
+        </table>
+
+
+        @{ 
+
+            if (ViewBag.Message == null)
+            {
+
+
+
+        <h3>REZERVASYON FORMU</h3>
+
+
+
+                using (Html.BeginForm())
+                {
+
+
+    <table border="1" cellpadding="5" cellspacing="0" width="600"> 
+        <tr>
+
+            @Html.Hidden("aracıd", Url.RequestContext.RouteData.Values["id"])
+
+            <td width="40%"> TC NO </td>
+            <td>@Html.EditorFor(Model => Model.tc)</td>
+        </tr>
+
+        <tr>
+            <td width="40%"> AD SOYAD </td>
+            <td>@Html.EditorFor(Model => Model.adsoyad)</td>
+        </tr>
+
+        <tr>
+            <td width="40%"> ALMA TARİHİ </td>
+            <td>@Html.EditorFor(Model => Model.AlmaTarihi)</td>
+            
+        </tr>
+
+        <tr>
+            <td width="40%"> TESLİM TARİHİ </td>
+            <td>@Html.TextBoxFor(Model => Model.TeslimTarihi, new { onblur = "ToplamPara()" })</td>
+        </tr>
+
+        <tr>
+            <td width="40%"> FİYAT (GÜNLÜK) </td>
+            <td>@Html.TextBox("Fiyat", ViewData["Fiyat"]) TL</td>
+        </tr>
+
+        <tr>
+            <td width="40%"> FİYAT (TOPLAM) </td>
+            <td>@Html.EditorFor(Model => Model.ucret) TL</td>
+        </tr>
+
+        <tr>
+            <td width="40%"></td>
+            <td><input type="submit" value="rezervasyon yap" /></td>
+        </tr>
+    </table>
+                    }
+                }
+            }
+
+    </div>
+
+    <h4>@ViewBag.Message</h4>
+
+    <p>
+        @Html.ActionLink("Araç Detayı", "Details", new { id = Url.RequestContext.RouteData.Values["id"] })
+        @Html.ActionLink("Araç Listesi", "Index")
+    </p>
+
+</body>
+</html>

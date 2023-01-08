@@ -1,0 +1,75 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SifreDegistir</title>
+</head>
+<body>
+
+
+    <h1>Abdüş oto</h1>
+    <h3>MÜŞTERİ ŞİFRE DEĞİŞTİRME SAYFASI</h3>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+<table class="table" border="1" cellpadding="5" cellspacing="0">
+
+    <tr>
+        <td width="40%">MEVCUT ŞİFRE</td>
+        <td>
+            <input type="text" name="msif" size="10" />
+        </td>
+    </tr>
+
+    <tr>
+        <td>YENİ ŞİFRE</td>
+        <td>
+            <input type="text" name="ysif" size="10" />
+        </td>
+    </tr>
+    <tr>
+        <td>YENİ ŞİFRE(TEKRAR)</td>
+        <td>
+            <input type="text" name="ysif2" size="10" />
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Değiştir" />
+        </td>
+    </tr>
+
+
+</table>
+    }
+
+
+    <p>
+        @ViewData["sonuc"]
+    </p>
+
+    
+    <p>
+        @Html.ActionLink("Profil", "Profil") |
+        @Html.ActionLink("Şifre değiştir", "SifreDegistir") |
+        @Html.ActionLink("Oturumu Kpat", "cikis") |
+        @Html.ActionLink("Rezervasyonlarım", "Index", "rezervation") |
+        @Html.ActionLink("Araçlar", "Index", "vehicle") |
+    </p>
+
+
+    
+
+
+</body>
+</html>

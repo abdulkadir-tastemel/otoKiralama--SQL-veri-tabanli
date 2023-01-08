@@ -1,0 +1,77 @@
+﻿@model RentCars.Models.Musteriler
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kayit</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <h1>Abdüş oto</h1>
+        <h3>MÜŞTERİ KAYIT</h3>
+
+
+        <table>
+            <tr>
+                <td>Tc KİMLİK NO </td>
+                <td>@Html.EditorFor(Model => Model.Tckimlik, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+
+            <tr>
+                <td>AD SOYAD </td>
+                <td>@Html.EditorFor(Model => Model.adsoyad, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+
+            <tr>
+                <td>DOĞUM TARİHİ </td>
+                <td>@Html.EditorFor(Model => Model.dogumtarihi, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+
+            <tr>
+                <td>CİNSİYET </td>
+                <td>
+                    @Html.RadioButtonFor(Model => Model.cinsiyet, "E") erkek
+                    @Html.RadioButtonFor(Model => Model.cinsiyet, "K") kadın
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>TELEFON</td>
+                <td>@Html.EditorFor(Model => Model.telefon, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+
+            <tr>
+                <td>ŞİFRE</td>
+                <td>@Html.EditorFor(Model => Model.sifre, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" nvalue="Kaydet" />
+                </td>
+            </tr>
+        </table>
+        
+    }
+
+
+        <p>@ViewData["sonuc"]</p>
+        <p>
+            @Html.ActionLink("Giriş","Giris") |
+            @Html.ActionLink("Araçlar","Index","vehicle")
+            
+        </p>
+
+
+</body>
+</html>

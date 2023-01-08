@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Giris</title>
+</head>
+<body>
+
+
+        <h1>Abdüş oto</h1>
+        <h3>Araç Listesi</h3>
+
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+    <table class="table" border="1" cellpadding="5" cellspacing="0">
+
+        <tr>
+            <td width="40%">TC KİMLİK NO</td>
+            <td>
+            <input type="text" name="tc" size="10"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>ŞİFRE</td>
+            <td>
+                <input type="text" name="sif" size="10" />
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Giris" />
+            </td>
+        </tr>
+
+
+    </table>
+        }
+
+
+<p>
+    @ViewData["sonuc"]
+</p>
+
+<p>
+    @Html.ActionLink("Kayıt ol ", "kayit") |
+    @Html.ActionLink("Araçlar", "Index", "vehicle")
+
+
+</p>
+
+   
+</body>
+</html>

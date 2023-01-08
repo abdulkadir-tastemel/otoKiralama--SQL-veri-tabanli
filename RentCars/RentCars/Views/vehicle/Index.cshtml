@@ -1,0 +1,87 @@
+﻿@model IEnumerable<RentCars.Models.carsTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/still.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <h1>Abdüş oto</h1>
+    <h3>Araç Listesi</h3>
+    <table class="table"border="1"cellpadding="5" cellspacing="0">
+        <tr>
+            <th>resim</th>
+            <th>
+                İSİM
+            </th>
+            <th>
+                MODEL
+            </th>
+            <th>
+                TARİH
+            </th>
+            <th>
+                YAKIT
+            </th>
+            <th>
+                VİTES
+            </th>
+            <th>
+                FİYAT $
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @{
+                    var dir = "~/VehicleImages/" + item.Id + ".jpg";
+                    <img src="@Url.Content(dir)" width="100" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarsModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carsDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carsGear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carsGas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carsPrice)
+            </td>
+            <td>
+                
+                @Html.ActionLink("Detay", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Rezervasyon", "rezervation", new { id=item.Id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+
+    <p>
+        @Html.ActionLink("Anasayfa", "Index", "Home") |
+        @Html.ActionLink("Hakkımızda", "About", "Home") |
+        @Html.ActionLink("Araçlar", "Index", "vehicle") |
+        @Html.ActionLink("Rezervasyonlarım", "Index", "rezervation") |
+    </p>
+
+
+</body>
+</html>

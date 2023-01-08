@@ -1,0 +1,75 @@
+﻿@model RentCars.Models.carsTable
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/still.css" rel="stylesheet" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h1>Abdüş oto</h1>
+        <h3>Araç bilgileri</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                ARABA ADI
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CarsName)
+            </dd>
+
+            <dt>
+                ARABA MODELİ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CarsModel)
+            </dd>
+
+            <dt>
+                TARİH
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.carsDate)
+            </dd>
+
+            <dt>
+                VİTES
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.carsGear)
+            </dd>
+
+            <dt>
+                TİPİ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.carsGas)
+            </dd>
+
+            <dt>
+                FİYAT
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.carsPrice)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Rezervasyon", "rezervation", new { id = Model.Id }) |
+        @Html.ActionLink("Araç Listesi", "Index")
+    </p>
+</body>
+</html>
